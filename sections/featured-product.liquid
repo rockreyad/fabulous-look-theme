@@ -154,7 +154,13 @@
                   {%- endif -%}
                 </h2>
               {%- when 'price' -%}
-                <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+                <div
+                  class="no-js-hidden"
+                  class="tw-bg-rose-600 tw-font-bold tw-p-4"
+                  id="price-{{ section.id }}"
+                  role="status"
+                  {{ block.shopify_attributes }}
+                >
                   {%- render 'price',
                     product: product,
                     use_variant: true,
@@ -283,7 +289,9 @@
                   </div>
                 </div>
               {%- when 'share' -%}
-                {% assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin %}
+                {%- liquid
+                  assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin
+                -%}
                 {% render 'share-button', block: block, share_link: share_url %}
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker',

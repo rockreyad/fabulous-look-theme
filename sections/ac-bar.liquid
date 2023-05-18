@@ -1,0 +1,45 @@
+<style>
+  .show-bar {
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.text_color }};
+  }
+</style>
+
+{% if section.settings.show_bar %}
+  <div class="show-bar  tw-font-light tw-text-center p-2">
+    {{ section.settings.announcement_text }}
+  </div>
+{% endif %}
+{% schema %}
+{
+  "name": "Sceondary Bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_bar",
+      "label": "Show announcement",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FBBF24",
+      "info": "Select a color for the Background"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#1F2937",
+      "info": "Select a color for the Text"
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement text",
+      "default": "We are offering lifetime warrenty"
+    }
+  ]
+}
+{% endschema %}
