@@ -1,0 +1,112 @@
+<style>
+  .show-bar {
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.text_color }};
+    font-size: {{ section.settings.text_size }}px;
+    text-align: {{ section.settings.text_align }};
+  }
+</style>
+
+{% if section.settings.show_bar %}
+  <div class="show-bar tw-text-rose-500 tw-font-light p-2">
+    {{ section.settings.announcement_text }}
+  </div>
+{% endif %}
+<div>{{ section.settings.show_html }}</div>
+{% schema %}
+{
+  "name": "Secondary Bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_bar",
+      "label": "Show announcement",
+      "default": false
+    },
+
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement text",
+      "default": "Place enter a heading or text"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "label": "Font size",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text align",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "info": "Select the text alignment"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#1F2937",
+      "info": "Select a color for the Text"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FBBF24",
+      "info": "Select a color for the Background"
+    },
+    {
+      "type": "html",
+      "id": "show_html",
+      "label": "Write Custom HTML Code",
+      "info": "example : <p>Place your content here</p>",
+      "default": "<p>Place your html content here</p>"
+    }
+  ],
+  "max_blocks": 2,
+  "blocks": [
+    {
+      "type": "rich_text",
+      "name": "Rich Text"
+    },
+    {
+      "type": "image",
+      "name": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Secondary Bar",
+      "category": "Announcement Bar",
+      "settings": {
+        "show_bar": false,
+        "announcement_text": "Place enter a heading or text",
+        "text_size": 16,
+        "text_align": "center",
+        "text_color": "#1F2937",
+        "background_color": "#FBBF24",
+        "show_html": "<p>Place your html content here</p>"
+      }
+    }
+  ]
+}
+{% endschema %}
